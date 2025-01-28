@@ -1,2 +1,2 @@
-# CGE310 Platformer Project
+# Hiniature Team: CGE310 Platformer Project
  
