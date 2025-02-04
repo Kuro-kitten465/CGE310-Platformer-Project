@@ -4,10 +4,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    public enum PlayerLook 
+    /*public enum PlayerLook 
     {
         None, TopLeft, TopRight, DownLeft, DownRight
-    }
+    }*/
 
     private Rigidbody2D m_RB2D;
 
@@ -22,8 +22,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_GroundCheckRadius = 0.2f;
     [SerializeField] private LayerMask m_GroundLayer;
 
+    [Header("Attack Config")]
+    [SerializeField] private GameObject AttackObj;
+
     // Private Members
-    public PlayerLook m_PlayerLookAt = PlayerLook.None;
+    //public PlayerLook m_PlayerLookAt = PlayerLook.None;
 
     private bool m_IsGrounded;
     private bool m_IsNearWall;
@@ -51,7 +54,7 @@ public class PlayerController : MonoBehaviour
         m_IsNearWall = Physics2D.OverlapCircle(m_LeftWallCheck.position, m_GroundCheckRadius, m_GroundLayer) ||
                         Physics2D.OverlapCircle(m_RightWallCheck.position, m_GroundCheckRadius, m_GroundLayer);
 
-        if (m_LookAxis.y == Vector2.up.y)
+        /*if (m_LookAxis.y == Vector2.up.y)
         {
             if (Mathf.Clamp(m_MoveAxis.x, -1, 1) == Vector2.left.x) m_PlayerLookAt = PlayerLook.TopLeft;
             else m_PlayerLookAt = PlayerLook.TopRight;
@@ -64,7 +67,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             m_PlayerLookAt = PlayerLook.None;
-        }
+        }*/
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -85,6 +88,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        m_IsShooting = context.phase.IsInProgress();
+        
     }
 }
