@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "LookUpDown",
-                    "type": "Value",
-                    "id": "67df1760-e41c-476d-9203-42239810b001",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "16878933-d8a4-406a-9f58-cfe83cedb329",
@@ -33,12 +24,21 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shoot",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "33498073-a65b-45b5-b177-2052e73ce413",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "Press",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "GoDownPlatform",
+                    "type": "Button",
+                    "id": "155df149-7f77-4f0c-8e00-7729c24a8e06",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -46,7 +46,7 @@
                 {
                     "name": "",
                     "id": "92dd165a-08b2-4a91-8d7e-d7267aed7a7e",
-                    "path": "<Keyboard>/k",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -57,11 +57,22 @@
                 {
                     "name": "",
                     "id": "89c262ca-80cf-4815-8d29-9bde0613e2aa",
-                    "path": "<Keyboard>/l",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Shoot",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2018d1e-b579-4b39-b6ef-8aaa6c606220",
+                    "path": "<VirtualMouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -99,37 +110,15 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "be195765-64e7-4fc3-964b-d738484b9de0",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LookUpDown",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "81640065-4a7d-4c28-9626-e7cd1285b9a2",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LookUpDown",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "8837472b-b469-4704-bced-3f803dac353a",
+                    "name": "",
+                    "id": "0a647dd1-65b9-4be9-99f9-9b4f8663b4c4",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LookUpDown",
+                    "action": "GoDownPlatform",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         },

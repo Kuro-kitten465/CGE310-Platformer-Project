@@ -4,11 +4,6 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    /*public enum PlayerLook 
-    {
-        None, TopLeft, TopRight, DownLeft, DownRight
-    }*/
-
     private Rigidbody2D m_RB2D;
 
     [Header("Movement Settings")]
@@ -25,15 +20,12 @@ public class PlayerController : MonoBehaviour
     [Header("Attack Config")]
     [SerializeField] private GameObject AttackObj;
 
-    // Private Members
-    //public PlayerLook m_PlayerLookAt = PlayerLook.None;
-
     private bool m_IsGrounded;
     private bool m_IsNearWall;
-    private bool m_IsShooting = false;
+    private bool m_IsAttacking = false;
+    private bool m_IsLeft = false;
 
     private Vector2 m_MoveAxis;
-    private Vector2 m_LookAxis;
 
     private void Awake()
     {
@@ -42,10 +34,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_RB2D.velocity = !m_IsNearWall ? new Vector2(m_MoveAxis.x, m_RB2D.velocity.y) :
-                                            new Vector2(m_RB2D.velocity.x, m_RB2D.velocity.y);
+        m_RB2D.velocity = !m_IsNearWall || m_IsGrounded ?
+                            new Vector2(m_MoveAxis.x * m_MoveSpeed, m_RB2D.velocity.y) :
+                            new Vector2(m_RB2D.velocity.x, m_RB2D.velocity.y);
 
-        if (m_IsShooting) Debug.Log("Shoot");
+        if (m_IsAttacking) Debug.Log("Shoot");
+        if (m_IsLeft) Debug.Log("Left Turn");
     }
 
     private void Update()
@@ -72,12 +66,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        m_MoveAxis = context.ReadValue<Vector2>() * m_MoveSpeed;
+        m_IsLeft = m_MoveAxis.x < 0;
+        m_MoveAxis = context.ReadValue<Vector2>();
     }
 
-    public void OnLook(InputAction.CallbackContext context)
+    public void OnGoDown(InputAction.CallbackContext context)
     {
-        m_LookAxis = context.ReadValue<Vector2>();
+        Debug.Log("DownBTN Work!");
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -86,8 +81,8 @@ public class PlayerController : MonoBehaviour
             m_RB2D.velocity = new Vector2(m_RB2D.velocity.x, m_JumpForce);
     }
 
-    public void OnShoot(InputAction.CallbackContext context)
+    public void OnAttack(InputAction.CallbackContext context)
     {
-        
+        Debug.Log("Attack");
     }
 }

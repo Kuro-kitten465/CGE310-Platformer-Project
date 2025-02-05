@@ -32,14 +32,14 @@ public abstract class Enemy : MonoBehaviour, IEnemy
 
     protected virtual void DetectPlayer()
     {
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, m_DetectionRadius, LayerMask.GetMask("Player"));
+        var hit = Physics2D.OverlapCircle(transform.position, m_DetectionRadius, LayerMask.GetMask("Player"));
 
         if (hit != null && hit.TryGetComponent<PlayerManager>(out var player))
         {
             m_Player = player;
 
-            Vector2 direction = (m_Player.gameObject.transform.position - transform.position).normalized;
-            RaycastHit2D rayHit = Physics2D.Raycast(transform.position, direction, m_DetectionRadius, LayerMask.GetMask("Player", "Obstacles"));
+            var direction = (m_Player.gameObject.transform.position - transform.position).normalized;
+            var rayHit = Physics2D.Raycast(transform.position, direction, m_DetectionRadius, LayerMask.GetMask("Player", "Obstacles"));
 
             if (rayHit.collider != null && rayHit.collider.gameObject.GetComponent<PlayerManager>())
             {
