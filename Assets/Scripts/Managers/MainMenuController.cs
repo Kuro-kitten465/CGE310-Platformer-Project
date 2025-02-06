@@ -8,6 +8,6 @@ public class MainMenuController : MonoBehaviour
 
     public void OnStartGame(InputAction.CallbackContext context)
     {
-        SceneManager.LoadScene(m_GameScene);
+        SceneManager.LoadSceneAsync(m_GameScene);
     }
 }

@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &14063156 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2481094627509075306, guid: 81423eca086224e43a8b1854ed814eae, type: 3}
+  m_PrefabInstance: {fileID: 3632891887482375103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &15738670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -827,7 +832,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -1894,6 +1899,7 @@ GameObject:
   - component: {fileID: 1911205265}
   - component: {fileID: 1911205264}
   - component: {fileID: 1911205267}
+  - component: {fileID: 1911205268}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1944,7 +1950,7 @@ Camera:
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1969,7 +1975,7 @@ Transform:
   m_GameObject: {fileID: 1911205262}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1995,6 +2001,21 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
+--- !u!114 &1911205268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911205262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70529114a8dcf24ba46e33769fb0c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 14063156}
+  fixedYPosition: 0
+  smoothSpeed: 5
 --- !u!1 &2031310383
 GameObject:
   m_ObjectHideFlags: 0
