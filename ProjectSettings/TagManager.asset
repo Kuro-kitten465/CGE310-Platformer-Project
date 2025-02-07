@@ -3,21 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Tiles
+  - 
   - Water
   - UI
   - Player
   - Interactable
   - Enemy
-  - 
-  - 
-  - 
-  - 
+  - Ground-Front
+  - Ground-Mid
+  - Ground-Back
+  - Tiles
   - 
   - 
   - 
@@ -40,4 +41,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground-Back
+    uniqueID: 947105541
+    locked: 0
+  - name: Ground-Mid
+    uniqueID: 1400469657
+    locked: 0
+  - name: Ground-Front
+    uniqueID: 4234992903
+    locked: 0
+  - name: Element
+    uniqueID: 2836711193
     locked: 0
