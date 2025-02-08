@@ -38760,6 +38760,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 28248187851351091, guid: 41df4b79ee6a3314383acc6df1e29475, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 28248187851351091, guid: 41df4b79ee6a3314383acc6df1e29475, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 37287164096308007, guid: 41df4b79ee6a3314383acc6df1e29475, type: 3}
       propertyPath: m_LocalPosition.x
       value: 167.5

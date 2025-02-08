@@ -16,6 +16,9 @@ public class PlayerManager : MonoBehaviour
     [Header("Game Config")]
     [SerializeField] Transform m_RespawnPoint;
     [SerializeField] float m_ItemSpeedTime = 20f;
+    [SerializeField] private AudioSource m_PickUpAudio;
+    [SerializeField] private AudioSource m_HitEmAudio;
+    [SerializeField] private AudioSource m_PlayerGotHitAudio;
 
     public int PlayerHealth => m_CurrentPlayerHealth;
     public int PlayerScore => m_Score;
@@ -44,11 +47,9 @@ public class PlayerManager : MonoBehaviour
         if (item.TryGetComponent<ICollectible>(out var collectible))
         {
             collectible.Collect(this);
-        }
-
-        if (item.TryGetComponent<IDestroyable>(out var destroyable))
-        {
-            destroyable.Destroy();
+            if (item.GetComponent<CheckPoint>()) return;
+            
+            m_PickUpAudio.Play();
         }
     }
 
@@ -57,7 +58,7 @@ public class PlayerManager : MonoBehaviour
         if (GameManager.Instance.IsGameOver || GameManager.Instance.IsGameWin) return;
 
         if (collision.gameObject.GetComponent<IEnemy>() == null) return;
-
+        m_PlayerGotHitAudio.Play();
         OnReciveDamage();
     }
 
@@ -113,6 +114,7 @@ public class PlayerManager : MonoBehaviour
     public void OnKillEnemy(Int16 score)
     {
         m_Score += score;
+        m_HitEmAudio.Play();
         StaticEventBus.Invoke(KeysContainer.ScoreUpdated);
     }
 

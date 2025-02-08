@@ -15,6 +15,7 @@ public class EnemyGunner : Enemy
     [SerializeField] private Transform m_FirePoint;
     [SerializeField] private float m_FireRate = 1.5f;
     [SerializeField] private float m_BulletVelocity = 5f;
+    [SerializeField] private AudioSource m_Audio;
 
     private bool m_CanShoot = true;
 
@@ -55,6 +56,7 @@ public class EnemyGunner : Enemy
         // Instantiate bullet
         GameObject bullet = Instantiate(m_BulletPrefab, m_FirePoint.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(m_IsLeft ? -m_BulletVelocity : m_BulletVelocity, 0); // Move left or right
+        m_Audio.Play();
 
         yield return new WaitForSeconds(m_FireRate);
         m_CanShoot = true;

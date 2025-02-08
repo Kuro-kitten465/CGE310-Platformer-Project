@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float m_MoveSpeed = 5f;
     public float m_JumpForce = 10f;
     [SerializeField] float m_ItemSpeedPower = 1.25f;
-
+    [SerializeField] private AudioSource m_AttackAudio;
     [Header("Ground Check")]
     [SerializeField] private Transform m_GroundCheck;
     [SerializeField] private Transform m_LeftWallCheck;
@@ -102,7 +102,10 @@ public class PlayerController : MonoBehaviour
         if (!m_IsGrounded) return;
 
         if (context.started)
+        {
             m_Anim.SetTrigger("IsAttack");
+            m_AttackAudio.Play();
+        }
     }
 
     public void OnAttackingHandle()
